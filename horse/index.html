@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talking about Horses | Author Sky</title>
+    <style>
+        :root { --amazon: #FF9900; --video: #eb4d4b; --audio: #6c5ce7; }
+        body { font-family: -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; background: #fdfdfd; padding: 40px 20px; text-align: center; }
+        .cover { width: 180px; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .btn { display: block; text-decoration: none; padding: 18px; margin: 12px auto; border-radius: 50px; font-weight: bold; width: 100%; max-width: 300px; color: white; }
+        #audio-box { display: none; margin-top: 20px; background: #f1f2f6; padding: 15px; border-radius: 15px; width: 100%; max-width: 300px; }
+        audio { width: 100%; }
+        /* 仅增加这一行下载按钮样式 */
+        .dl { display: inline-block; margin-top: 10px; color: var(--audio); font-weight: bold; text-decoration: none; border: 1px solid; padding: 8px 20px; border-radius: 20px; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <img src="cover.jpg" class="cover">
+    <h1>Talking about Horses</h1>
+    <a href="https://www.amazon.com/dp/B0GSKH9FJ1" class="btn" style="background:var(--amazon)">🛒 Buy on Amazon</a>
+    <a href="https://www.instagram.com/haigechan/reel/DWV9p4igkrr/" class="btn" style="background:var(--video)">📺 Watch Trailer</a>
+    <div class="btn" style="background:var(--audio); cursor:pointer;" onclick="document.getElementById('audio-box').style.display='block'">🎧 Listen & Download</div>
+
+    <div id="audio-box">
+        <audio controls><source src="horse_audio.mp3" type="audio/mpeg"></audio>
+        <a href="horse_audio.mp3" download="Horse_Story.mp3" class="dl">📥 Download MP3</a>
+    </div>
+</body>
+</html>
