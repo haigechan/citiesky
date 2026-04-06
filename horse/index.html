@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talking about Horses in the Year of the Horse | Author Sky</title>
+    <style>
+        :root { --amazon: #FF9900; --video: #eb4d4b; --audio: #6c5ce7; }
+        body { font-family: -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; background: #fdfdfd; padding: 40px 20px; text-align: center; }
+        .cover { width: 180px; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .btn { display: block; text-decoration: none; padding: 18px; margin: 12px auto; border-radius: 50px; font-weight: bold; width: 100%; max-width: 300px; color: white; transition: 0.3s; }
+        .btn:active { transform: scale(0.98); }
+        #audio-box { display: none; margin-top: 20px; background: #f1f2f6; padding: 15px; border-radius: 15px; width: 100%; max-width: 300px; box-sizing: border-box; }
+        audio { width: 100%; }
+
+        /* 新增：下载按钮样式 */
+        .download-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background-color: #fff;
+            color: var(--audio);
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            border: 1px solid var(--audio);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .download-btn:hover { background-color: var(--audio); color: #fff; }
+        .status-text { font-size: 11px; color: #666; margin-top: 8px; display: block; }
+    </style>
+</head>
+<body>
+    <img src="cover.jpg" class="cover" alt="Talking about Horses in the Year of the Horse">
+    <h1>Talking about Horses in the Year of the Horse</h1>
+    
+    <a href="https://www.amazon.com/dp/B0GSKH9FJ1" class="btn" style="background:var(--amazon)" target="_blank">🛒 Buy on Amazon</a>
+    <a href="https://www.instagram.com/haigechan/reel/DWV9p4igkrr/" class="btn" style="background:var(--video)" target="_blank">📺 Watch Trailer</a>
+    <div class="btn" style="background:var(--audio); cursor:pointer;" onclick="document.getElementById('audio-box').style.display='block'">🎧 Listen to Story</div>
+
+    <div id="audio-box">
+        <audio id="horseAudio" controls>
+            <source src="horse_audio.mp3" type="audio/mpeg">
+        </audio>
+
+        <button class="download-btn" onclick="downloadAudio('horse_audio.mp3')">
+            📥 Download Audio MP3
+        </button>
+        <span id="dlStatus" class="status-text"></span>
+    </div>
+
+    <script>
+        // 实现直接下载的函数
+        async function downloadAudio(url) {
+            const status = document.getElementById('dlStatus');
+            try {
+                status.innerText = "⏳ Processing...";
+                const response = await fetch(url);
+                if (!response.ok) throw new Error();
+
+                const blob = await response.blob();
+                const blobUrl = window.URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.href = blobUrl;
+                // 设置用户下载后的文件名
+                a.download = "Talking about Horses in the Year of the Horse.mp3";
+                document.body.appendChild(a);
+                a.click();
+                
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(blobUrl);
+                status.innerText = "Download started!";
+            } catch (err) {
+                // 如果在本地预览或环境不支持，提示用户长按保存
+                status.innerHTML = "<strong>Local preview detected.</strong><br>Please long-press the player above and select 'Save audio' after uploading to GitHub.";
+                console.error("Download blocked. This usually happens in local file preview.");
+            }
+        }
+    </script>
+</body>
+</html>
