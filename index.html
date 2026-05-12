@@ -8,16 +8,17 @@
         body { background-color: #121212; color: #ffffff; font-family: -apple-system, sans-serif; text-align: center; padding: 40px 20px; margin: 0; }
         .header { margin-bottom: 40px; }
         .header h1 { font-size: 28px; margin-bottom: 10px; }
-        /* 这里的 repeat(auto-fit, ...) 会确保当有 5 本书时，它们会根据屏幕宽度自动排成 2 排或 3 排 */
         .books-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1100px; margin: 0 auto; }
         .book-card { background: #1e1e1e; padding: 25px; border-radius: 20px; transition: transform 0.3s; }
         .book-card:hover { transform: translateY(-5px); }
-        .cover-img { width: 180px; height: 240px; object-fit: cover; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.5); margin-bottom: 20px; }
-        h2 { font-size: 18px; margin-bottom: 20px; height: 45px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-        .btn { display: block; padding: 12px; border-radius: 50px; font-weight: bold; text-decoration: none; margin: 10px auto; width: 85%; transition: opacity 0.2s; }
-        .btn:active { opacity: 0.8; }
+        .cover-img { width: 180px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.5); margin-bottom: 20px; }
+        h2 { font-size: 18px; margin-bottom: 20px; height: 45px; overflow: hidden; }
+        .btn { display: block; padding: 12px; border-radius: 50px; font-weight: bold; text-decoration: none; margin: 10px auto; width: 85%; }
         .btn-enter { background-color: #7d67ff; color: white; }
         .btn-buy { background-color: #ff9900; color: white; }
+        
+        /* 新增：为最新书籍添加一个微小的视觉标记（可选） */
+        .new-tag { color: #2ecc71; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 5px; display: block; }
     </style>
 </head>
 <body>
@@ -29,13 +30,22 @@
 
     <div class="books-grid">
         <div class="book-card">
-            <img src="coloring-animals/cover.jpg" class="cover-img">
+            <span class="new-tag">New Release</span>
+            <img src="coloring-veggies/cover.jpg" class="cover-img">
+            <h2>My First Vegetable Coloring Book</h2>
+            <a href="coloring-veggies/" class="btn btn-enter">Resource Center</a>
+            <a href="https://www.amazon.com/dp/B0H19X8FLG" class="btn btn-buy">🛒 Buy on Amazon</a>
+        </div>
+
+        <div class="book-card">
+            <br> <img src="coloring-animals/cover.jpg" class="cover-img">
             <h2>My First Animal Coloring Book</h2>
             <a href="coloring-animals/" class="btn btn-enter">Resource Center</a>
             <a href="https://www.amazon.com/dp/B0GZB44N42" class="btn btn-buy">🛒 Buy on Amazon</a>
         </div>
 
         <div class="book-card">
+            <br>
             <img src="coloringbook/cover.jpg" class="cover-img">
             <h2>My First Fruit Coloring Book</h2>
             <a href="coloringbook/" class="btn btn-enter">Resource Center</a>
@@ -54,13 +64,6 @@
             <h2>Mia's Kaleidoscope Wings</h2>
             <a href="mia/" class="btn btn-enter">Resource Center</a>
             <a href="https://www.amazon.com/dp/B0GNKRNMLJ" class="btn btn-buy">🛒 Buy on Amazon</a>
-        </div>
-        
-        <div class="book-card">
-            <img src="coloring-veggies/cover.jpg" class="cover-img">
-            <h2>My First Vegetable Coloring Book</h2>
-            <a href="coloring-veggies/" class="btn btn-enter">Resource Center</a>
-            <a href="https://www.amazon.com/dp/B0H19X8FLG" class="btn btn-buy">🛒 Buy on Amazon</a>
         </div>
     </div>
 
