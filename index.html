@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>By Haige Chan | Children's Interactive Library</title>
+    <style>
+        body { background-color: #121212; color: #ffffff; font-family: -apple-system, sans-serif; text-align: center; padding: 40px 20px; margin: 0; }
+        .header { margin-bottom: 40px; }
+        .header h1 { font-size: 28px; margin-bottom: 10px; }
+        .books-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1100px; margin: 0 auto; }
+        .book-card { background: #1e1e1e; padding: 25px; border-radius: 20px; transition: transform 0.3s; }
+        .book-card:hover { transform: translateY(-5px); }
+        .cover-img { width: 180px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.5); margin-bottom: 20px; }
+        h2 { font-size: 18px; margin-bottom: 20px; height: 45px; overflow: hidden; }
+        .btn { display: block; padding: 12px; border-radius: 50px; font-weight: bold; text-decoration: none; margin: 10px auto; width: 85%; }
+        .btn-enter { background-color: #7d67ff; color: white; }
+        .btn-buy { background-color: #ff9900; color: white; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>By Haige Chan</h1>
+        <p>Interactive Books for Young Learners</p>
+    </div>
+
+    <div class="books-grid">
+        <!-- 1. 动物涂色本 (最新的) -->
+        <div class="book-card">
+            <img src="coloring-animals/cover.jpg" class="cover-img">
+            <h2>My First Animal Coloring Book</h2>
+            <a href="coloring-animals/" class="btn btn-enter">Resource Center</a>
+            <a href="亚马逊购买链接" class="btn btn-buy">🛒 Buy on Amazon</a>
+        </div>
+
+        <!-- 2. 水果涂色本 -->
+        <div class="book-card">
+            <img src="coloringbook/cover.jpg" class="cover-img">
+            <h2>My First Fruit Coloring Book</h2>
+            <a href="coloringbook/" class="btn btn-enter">Resource Center</a>
+            <a href="亚马逊购买链接" class="btn btn-buy">🛒 Buy on Amazon</a>
+        </div>
+
+        <!-- 3. 赛马/马年绘本 -->
+        <div class="book-card">
+            <img src="horse/cover.jpg" class="cover-img">
+            <h2>Talking about Horses</h2>
+            <a href="horse/" class="btn btn-enter">Resource Center</a>
+            <a href="亚马逊购买链接" class="btn btn-buy">🛒 Buy on Amazon</a>
+        </div>
+
+        <!-- 4. Mia 绘本 -->
+        <div class="book-card">
+            <img src="mia/cover.jpg" class="cover-img">
+            <h2>Mia's Kaleidoscope Wings</h2>
+            <a href="mia/" class="btn btn-enter">Resource Center</a>
+            <a href="亚马逊购买链接" class="btn btn-buy">🛒 Buy on Amazon</a>
+        </div>
+    </div>
+
+</body>
+</html>
