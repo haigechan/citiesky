@@ -1,256 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Fruit Coloring Book - By Haige Chan</title>
-    <style>
-        /* 1. 基础背景与字体 - 与动物绘本对齐 */
-        body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        /* 2. 顶端返回链接 */
-        .back-link {
-            margin-top: 20px;
-            color: #aaaaaa;
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s;
-        }
-        .back-link:hover { color: #ffffff; }
-
-        /* 3. 封面图容器 */
-        .cover-container {
-            margin: 30px 0;
-            width: 80%;
-            max-width: 300px;
-        }
-        .cover-img {
-            width: 100%;
-            border-radius: 24px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-            display: block;
-        }
-
-        /* 4. 标题 */
-        h1 {
-            font-size: 24px;
-            margin: 10px 20px 30px 20px;
-            font-weight: 700;
-            line-height: 1.4;
-            text-align: center;
-        }
-
-        /* 5. 按钮组样式 */
-        .btn-group {
-            width: 90%;
-            max-width: 380px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 18px;
-            color: white;
-            transition: transform 0.2s, filter 0.2s;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .btn:active { transform: scale(0.96); }
-        .btn i { margin-right: 12px; font-size: 20px; font-style: normal; }
-
-        /* 按钮配色 - 严格遵循您的变量 */
-        .btn-amazon { background-color: #FF9900; }
-        .btn-video  { background-color: #eb4d4b; }
-        .btn-audio  { background-color: #6c5ce7; }
-        .btn-maze   { background-color: #27ae60; }
-
-        /* 6. 展开框样式 - 适配暗色模式 */
-        .hidden-box { 
-            display: none; 
-            margin-top: 10px; 
-            background: #1e1e1e; 
-            padding: 20px; 
-            border-radius: 20px; 
-            width: 100%;
-            box-sizing: border-box;
-            border: 1px solid #333;
-        }
-        
-        audio { width: 100%; margin-bottom: 15px; }
-
-        .dl-trigger {
-            background: #6c5ce7;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 14px;
-            border: none;
-            cursor: pointer;
-            display: inline-block;
-        }
-        .status-msg { font-size: 12px; color: #888; margin-top: 10px; }
-        .answer-img { width: 100%; border-radius: 15px; margin-top: 15px; }
-
-        /* 新增：大图容器样式 - 用于显示迷宫大图 */
-        .large-image-box {
-            display: none; /* 默认隐藏 */
-            margin-top: 20px;
-            width: 100%;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Fruit Coloring Book - By Haige Chan</title>
+    <style>
+        /* 1. 基础背景与字体 - 与动物绘本对齐 */
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
         }
-        .large-answer-img {
-            width: 100%; /* 这里设置为 100%，将填满 max-width 允许的空间 */
-            max-width: 600px; /* 设置大图的最大宽度 */
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.7); /* 增强阴影 */
+
+        /* 2. 顶端返回链接 */
+        .back-link {
+            margin-top: 20px;
+            color: #aaaaaa;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        .back-link:hover { color: #ffffff; }
+
+        /* 3. 封面图容器 */
+        .cover-container {
+            margin: 30px 0;
+            width: 80%;
+            max-width: 300px;
+        }
+        .cover-img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
             display: block;
         }
 
-        footer {
-            margin-top: auto;
-            padding: 40px 0 20px 0;
-            color: #444;
-            font-size: 13px;
-        }
-    </style>
+        /* 4. 标题 */
+        h1 {
+            font-size: 24px;
+            margin: 10px 20px 30px 20px;
+            font-weight: 700;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        /* 5. 按钮组样式 */
+        .btn-group {
+            width: 90%;
+            max-width: 380px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            color: white;
+            transition: transform 0.2s, filter 0.2s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .btn:active { transform: scale(0.96); }
+        .btn i { margin-right: 12px; font-size: 20px; font-style: normal; }
+
+        /* 按钮配色 - 严格遵循您的变量 */
+        .btn-amazon { background-color: #FF9900; }
+        .btn-video  { background-color: #eb4d4b; }
+        .btn-audio  { background-color: #6c5ce7; }
+        .btn-maze   { background-color: #27ae60; }
+
+        /* 6. 展开框样式 - 适配暗色模式 */
+        .hidden-box { 
+            display: none; 
+            margin-top: 10px; 
+            background: #1e1e1e; 
+            padding: 20px; 
+            border-radius: 20px; 
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #333;
+        }
+        
+        audio { width: 100%; margin-bottom: 15px; }
+
+        .dl-trigger {
+            background: #6c5ce7;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .status-msg { font-size: 12px; color: #888; margin-top: 10px; }
+        .answer-img { width: 100%; border-radius: 15px; margin-top: 15px; }
+
+        footer {
+            margin-top: auto;
+            padding: 40px 0 20px 0;
+            color: #444;
+            font-size: 13px;
+        }
+    </style>
 </head>
 <body>
 
-    <a href="../" class="back-link">← Back to By Haige Chan's Library</a>
+    <a href="../" class="back-link">← Back to By Haige Chan's Library</a>
 
-    <div class="cover-container">
-        <img src="cover.jpg" class="cover-img" alt="Fruit Coloring Book Cover">
-    </div>
+    <div class="cover-container">
+        <img src="cover.jpg" class="cover-img" alt="Fruit Coloring Book Cover">
+    </div>
 
-    <h1>My First Fruit Coloring Book</h1>
+    <h1>My First Fruit Coloring Book</h1>
 
-    <div class="btn-group">
-        <!-- 亚马逊购买 -->
-        <a href="https://www.amazon.com/dp/B0GVYGDSNV" class="btn btn-amazon" target="_blank">
-            <i>🛒</i> Buy on Amazon
-        </a>
+    <div class="btn-group">
+        <!-- 亚马逊购买 -->
+        <a href="https://www.amazon.com/dp/B0GVYGDSNV" class="btn btn-amazon" target="_blank">
+            <i>🛒</i> Buy on Amazon
+        </a>
 
-        <!-- 视频介绍 -->
-        <a href="https://www.instagram.com/p/DWrCfjkAj_g/" class="btn btn-video" target="_blank">
-            <i>📺</i> Watch Trailer
-        </a>
+        <!-- 视频介绍 -->
+        <a href="https://www.instagram.com/p/DWrCfjkAj_g/" class="btn btn-video" target="_blank">
+            <i>📺</i> Watch Trailer
+        </a>
 
-        <!-- 音频展开按钮 -->
-        <button class="btn btn-audio" onclick="toggleBox('audio-box')">
-            <i>🎧</i> Listen & Download
-        </button>
+        <!-- 音频展开按钮 -->
+        <button class="btn btn-audio" onclick="toggleBox('audio-box')">
+            <i>🎧</i> Listen & Download
+        </button>
 
-        <div id="audio-box" class="hidden-box">
-            <audio id="audioPlayer" controls src="coloringbook.mp3"></audio>
-            <div style="text-align: center;">
-                <button id="downloadBtn" class="dl-trigger" onclick="handleDownload('coloringbook.mp3')">
-                    📥 Download MP3
-                </button>
-                <p id="dlStatus" class="status-msg"></p>
-            </div>
-        </div>
-
-        <!-- 答案展开按钮 -->
-        <button class="btn btn-maze" onclick="toggleMazeAnswer()">
-            <i>🧩</i> View Maze Answer
-        </button>
-
-        <div id="maze-box" class="hidden-box">
-            <p style="margin:0 0 10px 0; color:#fff; font-weight:bold; text-align:center;">Maze Answer:</p>
-            <!-- 仍然保留小图，但这里可能不需要了，直接显示大图即可，按用户要求 -->
-            <!-- <img src="maze-answer.jpg" class="answer-img" alt="Maze Answer"> -->
-        </div>
-
-        <!-- 新增：大图显示区域 -->
-        <div id="large-maze-box" class="large-image-box">
-            <img src="maze-answer.jpg" class="large-answer-img" alt="Maze Answer 大图">
+        <div id="audio-box" class="hidden-box">
+            <audio id="audioPlayer" controls src="coloringbook.mp3"></audio>
+            <div style="text-align: center;">
+                <button id="downloadBtn" class="dl-trigger" onclick="handleDownload('coloringbook.mp3')">
+                    📥 Download MP3
+                </button>
+                <p id="dlStatus" class="status-msg"></p>
+            </div>
         </div>
 
-    </div>
+        <!-- 答案展开按钮 -->
+        <button class="btn btn-maze" onclick="toggleBox('maze-box')">
+            <i>🧩</i> View Maze Answer
+        </button>
 
-    <footer>
-        © By Haige Chan
-    </footer>
+        <div id="maze-box" class="hidden-box">
+            <p style="margin:0 0 10px 0; color:#fff; font-weight:bold; text-align:center;">Maze Answer:</p>
+            <img src="maze-answer.jpg" class="answer-img" alt="Maze Answer">
+        </div>
+    </div>
 
-    <script>
-        // 通用切换显示/隐藏逻辑
-        function toggleBox(id) {
-            const box = document.getElementById(id);
-            const isVisible = box.style.display === 'block';
-            // 先关闭所有 hidden-box，确保只展开一个
-            document.querySelectorAll('.hidden-box').forEach(b => b.style.display = 'none');
-            // 关闭大图区域
-            document.getElementById('large-maze-box').style.display = 'none';
-            box.style.display = isVisible ? 'none' : 'block';
-        }
+    <footer>
+        © By Haige Chan
+    </footer>
 
-        // 新增：迷宫大图切换逻辑
-        function toggleMazeAnswer() {
-            const mazeBox = document.getElementById('maze-box');
-            const largeMazeBox = document.getElementById('large-maze-box');
-            const isVisible = largeMazeBox.style.display === 'flex';
-
-            // 关闭所有 hidden-box
+    <script>
+        // 切换显示/隐藏逻辑
+        function toggleBox(id) {
+            const box = document.getElementById(id);
+            const isVisible = box.style.display === 'block';
+            // 先关闭所有，再打开点击的（可选）
             document.querySelectorAll('.hidden-box').forEach(b => b.style.display = 'none');
-
-            if (isVisible) {
-                mazeBox.style.display = 'none';
-                largeMazeBox.style.display = 'none';
-            } else {
-                // 如果要显示标题，打开 maze-box
-                mazeBox.style.display = 'block';
-                // 打开大图容器
-                largeMazeBox.style.display = 'flex';
-            }
+            box.style.display = isVisible ? 'none' : 'block';
         }
 
-        // 您的原版下载逻辑
-        async function handleDownload(url) {
-            const btn = document.getElementById('downloadBtn');
-            const status = document.getElementById('dlStatus');
-            try {
-                btn.innerText = "⏳ Processing...";
-                const response = await fetch(url);
-                if (!response.ok) throw new Error();
-                const blob = await response.blob();
-                const blobUrl = window.URL.createObjectURL(blob);
-                const link = document.createElement('a');
-                link.href = blobUrl;
-                link.download = "Fruit_Coloring_Book_Audio.mp3";
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                window.URL.revokeObjectURL(blobUrl);
-                btn.innerText = "📥 Download MP3";
-                status.innerText = "Download started!";
-            } catch (err) {
-                btn.innerText = "📥 Manual Save";
-                status.innerHTML = "<strong>Environment limited.</strong><br>Long-press player and select 'Save audio'.";
-            }
-        }
-    </script>
+        // 您的原版下载逻辑
+        async function handleDownload(url) {
+            const btn = document.getElementById('downloadBtn');
+            const status = document.getElementById('dlStatus');
+            try {
+                btn.innerText = "⏳ Processing...";
+                const response = await fetch(url);
+                if (!response.ok) throw new Error();
+                const blob = await response.blob();
+                const blobUrl = window.URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = blobUrl;
+                link.download = "Fruit_Coloring_Book_Audio.mp3";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                window.URL.revokeObjectURL(blobUrl);
+                btn.innerText = "📥 Download MP3";
+                status.innerText = "Download started!";
+            } catch (err) {
+                btn.innerText = "📥 Manual Save";
+                status.innerHTML = "<strong>Environment limited.</strong><br>Long-press player and select 'Save audio'.";
+            }
+        }
+    </script>
 </body>
 </html>
