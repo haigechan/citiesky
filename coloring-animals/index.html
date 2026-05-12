@@ -3,74 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Animal Coloring Book - Resources</title>
+    <title>My First Animal Coloring Book - By Haige Chan</title>
     <style>
+        /* 1. 基础背景与字体 */
         body {
             background-color: #121212;
             color: #ffffff;
-            font-family: -apple-system, sans-serif;
-            text-align: center;
-            padding: 40px 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* 核心：所有内容水平居中 */
+            min-height: 100vh;
         }
 
-        /* 返回总入口的按钮 */
+        /* 2. 返回链接：放在最顶部 */
         .back-link {
-            display: inline-block;
-            margin-bottom: 30px;
-            color: #888;
+            margin-top: 20px;
+            color: #aaaaaa;
             text-decoration: none;
             font-size: 14px;
+            transition: color 0.3s;
         }
+        .back-link:hover { color: #ffffff; }
 
+        /* 3. 封面图：居中且比例协调 */
+        .cover-container {
+            margin: 30px 0;
+            width: 80%;
+            max-width: 300px;
+        }
         .cover-img {
-            width: 220px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin-bottom: 25px;
+            width: 100%;
+            border-radius: 24px; /* 更加圆润 */
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            display: block;
         }
 
-        h1 { font-size: 24px; margin-bottom: 30px; }
+        /* 4. 标题 */
+        h1 {
+            font-size: 24px;
+            margin: 10px 20px 30px 20px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
 
-        /* 彩色大圆角按钮样式 - 参考 PixPin_2026-05-12_14-47-44.png */
+        /* 5. 按钮组：参考 PixPin_2026-05-12_16-29-59.jpg 的颜色 */
+        .btn-group {
+            width: 90%;
+            max-width: 380px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px; /* 按钮之间的间距 */
+        }
+
         .btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 90%;
-            max-width: 340px;
-            margin: 15px auto;
-            padding: 18px;
-            border-radius: 50px;
+            padding: 16px;
+            border-radius: 50px; /* 大圆角 */
             text-decoration: none;
-            font-weight: bold;
-            color: white;
+            font-weight: 600;
             font-size: 18px;
+            color: white;
+            transition: transform 0.2s, filter 0.2s;
         }
+        .btn:active { transform: scale(0.96); }
+        .btn i { margin-right: 12px; font-size: 20px; }
 
-        .btn-amazon { background-color: #ff9900; } /* 橙色 */
-        .btn-video  { background-color: #f85959; } /* 红色 */
-        .btn-audio  { background-color: #7d67ff; } /* 紫色 */
-        .btn-maze   { background-color: #28a745; } /* 绿色 */
+        .btn-amazon { background-color: #ff9900; }
+        .btn-video  { background-color: #f85959; }
+        .btn-audio  { background-color: #7d67ff; }
+        .btn-maze   { background-color: #28a745; }
 
-        .btn i { margin-right: 12px; font-style: normal; }
+        /* 6. 页脚 */
+        footer {
+            margin-top: auto; /* 推到底部 */
+            padding: 40px 0 20px 0;
+            color: #444;
+            font-size: 13px;
+        }
     </style>
 </head>
 <body>
 
-    <!-- 引导用户发现您的其他作品 -->
+    <!-- 顶端返回 -->
     <a href="../" class="back-link">← Back to By Haige Chan's Library</a>
 
-    <img src="cover.jpg" class="cover-img" alt="Book Cover">
+    <!-- 封面图容器 -->
+    <div class="cover-container">
+        <img src="cover.jpg" class="cover-img" alt="Animal Coloring Book Cover">
+    </div>
+
+    <!-- 书名 -->
     <h1>My First Animal Coloring Book</h1>
 
-    <!-- 这里的链接稍后根据您的实际网址替换 -->
-    <a href="您的亚马逊链接" class="btn btn-amazon"><i>🛒</i> Buy on Amazon</a>
-    <a href="您的YouTube视频链接" class="btn btn-video"><i>📺</i> Watch Trailer</a>
-    <a href="audio.mp3" class="btn btn-audio"><i>🎧</i> Listen & Download</a>
-    <a href="maze-answer.jpg" class="btn btn-maze"><i>🧩</i> View Maze Answer</a>
+    <!-- 按钮组 -->
+    <div class="btn-group">
+        <a href="您的亚马逊链接" class="btn btn-amazon"><i>🛒</i> Buy on Amazon</a>
+        <!-- 如果还没视频，可以先删掉下面这行 -->
+        <a href="您的YouTube链接" class="btn btn-video"><i>📺</i> Watch Trailer</a>
+        <a href="audio.mp3" class="btn btn-audio"><i>🎧</i> Listen & Download</a>
+        <a href="maze-answer.jpg" class="btn btn-maze"><i>🧩</i> View Maze Answer</a>
+    </div>
 
-    <p style="margin-top: 40px; color: #444; font-size: 12px;">© By Haige Chan</p>
+    <footer>
+        © By Haige Chan
+    </footer>
 
 </body>
 </html>
