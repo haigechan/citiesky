@@ -8,6 +8,30 @@
         body { background-color: #121212; color: #ffffff; font-family: -apple-system, sans-serif; text-align: center; padding: 40px 20px; margin: 0; }
         .header { margin-bottom: 40px; }
         .header h1 { font-size: 28px; margin-bottom: 10px; }
+        
+        /* 新增：大分类标题样式（高档、克制，两边带渐变线） */
+        .section-title {
+            grid-column: 1 / -1; /* 让标题横跨整行网格 */
+            font-size: 20px;
+            font-weight: bold;
+            color: #aaaaaa;
+            margin: 40px 0 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        /* 标题两侧的精致渐变线 */
+        .section-title::before, .section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            max-width: 150px;
+            background: linear-gradient(to right, transparent, #444, transparent);
+        }
+        .section-title::before { background: linear-gradient(to left, #444, transparent); }
+        .section-title::after { background: linear-gradient(to right, #444, transparent); }
+
         .books-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1100px; margin: 0 auto; }
         .book-card { background: #1e1e1e; padding: 25px; border-radius: 20px; transition: transform 0.3s; }
         .book-card:hover { transform: translateY(-5px); }
@@ -18,10 +42,8 @@
         .btn-buy { background-color: #ff9900; color: white; }
         
         .new-tag { color: #2ecc71; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 5px; display: block; }
+        /* 新增：极简版专属的浅色标记，方便和原版区分 */
         .easy-tag { color: #3498db; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 5px; display: block; }
-
-        /* 纯文本分类标题，无任何复杂CSS逻辑，绝对不会阻挡点击 */
-        .section-heading { font-size: 22px; font-weight: bold; color: #aaaaaa; margin: 50px auto 20px auto; text-align: left; max-width: 1100px; }
     </style>
 </head>
 <body>
@@ -31,22 +53,21 @@
         <p>Interactive Books for Young Learners</p>
     </div>
 
-    <!-- =======================================================
-         1. 简单大图版 (Bold & Easy Edition)
-         ======================================================= -->
-    <div class="section-heading">🟠 Bold & Easy Edition (Ages 2-4)</div>
-    
     <div class="books-grid">
-        <!-- 新水果简化版 -->
+
+        <!-- ======================= 区域一：极简大图系列 ======================= -->
+        <div class="section-title">Bold & Easy Edition (Ages 2-4)</div>
+
+        <!-- 1. 新水果简化版 -->
         <div class="book-card">
             <span class="easy-tag">Toddler Friendly</span>
-            <img src="coloringbook-easy/cover.jpg" class="cover-img">
+            <img src="coloringbook-easy/cover.jpg" class="cover-img"> <!-- 💡 记得把图片路径改成你新的简化版路径 -->
             <h2>My First Fruit Coloring Book (Bold & Easy)</h2>
             <a href="coloringbook-easy/" class="btn btn-enter">Resource Center</a>
-            <a href="https://www.amazon.com/dp/B0GVYGDSNV" class="btn btn-buy">🛒 Buy on Amazon</a>
+            <a href="https://www.amazon.com/dp/B0GVYGDSNV" class="btn btn-buy">🛒 Buy on Amazon</a> <!-- 💡 记得换成新书链接 -->
         </div>
 
-        <!-- 预留：新蔬菜简化版 -->
+        <!-- 2. 预留：新蔬菜简化版 -->
         <div class="book-card">
             <span class="easy-tag">Toddler Friendly</span>
             <img src="coloring-veggies-easy/cover.jpg" class="cover-img">
@@ -55,7 +76,7 @@
             <a href="#" class="btn btn-buy">🛒 Buy on Amazon</a>
         </div>
 
-        <!-- 预留：新动物简化版 -->
+        <!-- 3. 预留：新动物简化版 -->
         <div class="book-card">
             <span class="easy-tag">Toddler Friendly</span>
             <img src="coloring-animals-easy/cover.jpg" class="cover-img">
@@ -63,16 +84,11 @@
             <a href="coloring-animals-easy/" class="btn btn-enter">Resource Center</a>
             <a href="#" class="btn btn-buy">🛒 Buy on Amazon</a>
         </div>
-    </div>
 
 
-    <!-- =======================================================
-         2. 原有的系列版 (Activity & Game Edition)
-         ======================================================= -->
-    <div class="section-heading">🟢 Activity & Game Edition (Ages 4-6)</div>
-    
-    <div class="books-grid">
-        <!-- 1. 蔬菜 -->
+        <!-- ======================= 区域二：益智游戏系列（原版） ======================= -->
+        <div class="section-title">Activity & Game Edition (Ages 4-6)</div>
+
         <div class="book-card">
             <span class="new-tag">New Release</span>
             <img src="coloring-veggies/cover.jpg" class="cover-img">
@@ -81,24 +97,24 @@
             <a href="https://www.amazon.com/dp/B0H19X8FLG" class="btn btn-buy">🛒 Buy on Amazon</a>
         </div>
 
-        <!-- 2. 动物 -->
         <div class="book-card">
-            <br> <img src="coloring-animals/cover.jpg" class="cover-img">
+            <img src="coloring-animals/cover.jpg" class="cover-img">
             <h2>My First Animal Coloring Book</h2>
             <a href="coloring-animals/" class="btn btn-enter">Resource Center</a>
             <a href="https://www.amazon.com/dp/B0GZB44N42" class="btn btn-buy">🛒 Buy on Amazon</a>
         </div>
 
-        <!-- 3. 水果 -->
         <div class="book-card">
-            <br>
             <img src="coloringbook/cover.jpg" class="cover-img">
             <h2>My First Fruit Coloring Book</h2>
             <a href="coloringbook/" class="btn btn-enter">Resource Center</a>
             <a href="https://www.amazon.com/dp/B0GVYGDSNV" class="btn btn-buy">🛒 Buy on Amazon</a>
         </div>
 
-        <!-- 4. 马 -->
+
+        <!-- ======================= 区域三：故事绘本系列 ======================= -->
+        <div class="section-title">Storybooks & Inspiration</div>
+
         <div class="book-card">
             <img src="horse/cover.jpg" class="cover-img">
             <h2>Talking about Horses</h2>
@@ -106,13 +122,13 @@
             <a href="https://www.amazon.com/dp/B0GSKH9FJ1" class="btn btn-buy">🛒 Buy on Amazon</a>
         </div>
 
-        <!-- 5. 蝴蝶 -->
         <div class="book-card">
             <img src="mia/cover.jpg" class="cover-img">
             <h2>Mia's Kaleidoscope Wings</h2>
             <a href="mia/" class="btn btn-enter">Resource Center</a>
             <a href="https://www.amazon.com/dp/B0GNKRNMLJ" class="btn btn-buy">🛒 Buy on Amazon</a>
         </div>
+
     </div>
 
 </body>
