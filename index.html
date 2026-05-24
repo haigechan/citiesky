@@ -17,8 +17,11 @@
         .btn-enter { background-color: #7d67ff; color: white; }
         .btn-buy { background-color: #ff9900; color: white; }
         
-        /* 新增：为最新书籍添加一个微小的视觉标记（可选） */
         .new-tag { color: #2ecc71; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 5px; display: block; }
+        .easy-tag { color: #3498db; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 5px; display: block; }
+
+        /* 纯文本分类标题，无任何复杂CSS逻辑，绝对不会阻挡点击 */
+        .section-heading { font-size: 22px; font-weight: bold; color: #aaaaaa; margin: 50px auto 20px auto; text-align: left; max-width: 1100px; }
     </style>
 </head>
 <body>
@@ -28,7 +31,48 @@
         <p>Interactive Books for Young Learners</p>
     </div>
 
+    <!-- =======================================================
+         1. 简单大图版 (Bold & Easy Edition)
+         ======================================================= -->
+    <div class="section-heading">🟠 Bold & Easy Edition (Ages 2-4)</div>
+    
     <div class="books-grid">
+        <!-- 新水果简化版 -->
+        <div class="book-card">
+            <span class="easy-tag">Toddler Friendly</span>
+            <img src="coloringbook-easy/cover.jpg" class="cover-img">
+            <h2>My First Fruit Coloring Book (Bold & Easy)</h2>
+            <a href="coloringbook-easy/" class="btn btn-enter">Resource Center</a>
+            <a href="https://www.amazon.com/dp/B0GVYGDSNV" class="btn btn-buy">🛒 Buy on Amazon</a>
+        </div>
+
+        <!-- 预留：新蔬菜简化版 -->
+        <div class="book-card">
+            <span class="easy-tag">Toddler Friendly</span>
+            <img src="coloring-veggies-easy/cover.jpg" class="cover-img">
+            <h2>My First Vegetable Coloring Book (Bold & Easy)</h2>
+            <a href="coloring-veggies-easy/" class="btn btn-enter">Resource Center</a>
+            <a href="#" class="btn btn-buy">🛒 Buy on Amazon</a>
+        </div>
+
+        <!-- 预留：新动物简化版 -->
+        <div class="book-card">
+            <span class="easy-tag">Toddler Friendly</span>
+            <img src="coloring-animals-easy/cover.jpg" class="cover-img">
+            <h2>My First Animal Coloring Book (Bold & Easy)</h2>
+            <a href="coloring-animals-easy/" class="btn btn-enter">Resource Center</a>
+            <a href="#" class="btn btn-buy">🛒 Buy on Amazon</a>
+        </div>
+    </div>
+
+
+    <!-- =======================================================
+         2. 原有的系列版 (Activity & Game Edition)
+         ======================================================= -->
+    <div class="section-heading">🟢 Activity & Game Edition (Ages 4-6)</div>
+    
+    <div class="books-grid">
+        <!-- 1. 蔬菜 -->
         <div class="book-card">
             <span class="new-tag">New Release</span>
             <img src="coloring-veggies/cover.jpg" class="cover-img">
@@ -37,6 +81,7 @@
             <a href="https://www.amazon.com/dp/B0H19X8FLG" class="btn btn-buy">🛒 Buy on Amazon</a>
         </div>
 
+        <!-- 2. 动物 -->
         <div class="book-card">
             <br> <img src="coloring-animals/cover.jpg" class="cover-img">
             <h2>My First Animal Coloring Book</h2>
@@ -44,6 +89,7 @@
             <a href="https://www.amazon.com/dp/B0GZB44N42" class="btn btn-buy">🛒 Buy on Amazon</a>
         </div>
 
+        <!-- 3. 水果 -->
         <div class="book-card">
             <br>
             <img src="coloringbook/cover.jpg" class="cover-img">
@@ -52,6 +98,7 @@
             <a href="https://www.amazon.com/dp/B0GVYGDSNV" class="btn btn-buy">🛒 Buy on Amazon</a>
         </div>
 
+        <!-- 4. 马 -->
         <div class="book-card">
             <img src="horse/cover.jpg" class="cover-img">
             <h2>Talking about Horses</h2>
@@ -59,6 +106,7 @@
             <a href="https://www.amazon.com/dp/B0GSKH9FJ1" class="btn btn-buy">🛒 Buy on Amazon</a>
         </div>
 
+        <!-- 5. 蝴蝶 -->
         <div class="book-card">
             <img src="mia/cover.jpg" class="cover-img">
             <h2>Mia's Kaleidoscope Wings</h2>
