@@ -9,9 +9,8 @@
         .header { margin-bottom: 40px; }
         .header h1 { font-size: 28px; margin-bottom: 10px; }
         
-        /* 新增：大分类标题样式（高档、克制，两边带渐变线） */
         .section-title {
-            grid-column: 1 / -1; /* 让标题横跨整行网格 */
+            grid-column: 1 / -1;
             font-size: 20px;
             font-weight: bold;
             color: #aaaaaa;
@@ -21,7 +20,6 @@
             justify-content: center;
             gap: 15px;
         }
-        /* 标题两侧的精致渐变线 */
         .section-title::before, .section-title::after {
             content: "";
             flex: 1;
@@ -42,11 +40,23 @@
         .btn-buy { background-color: #ff9900; color: white; }
         
         .new-tag { color: #2ecc71; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 5px; display: block; }
-        /* 新增：极简版专属的浅色标记，方便和原版区分 */
         .easy-tag { color: #3498db; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 5px; display: block; }
+
+        /* 音乐控制按钮样式 */
+        #music-btn {
+            position: fixed; bottom: 20px; right: 20px; z-index: 9999;
+            width: 50px; height: 50px; border-radius: 50%;
+            background: #7d67ff; color: white; border: none;
+            cursor: pointer; font-size: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
     </style>
 </head>
 <body>
+
+    <audio id="bg-music" loop>
+        <source src="a birthday melody.mp3" type="audio/mpeg">
+    </audio>
+    <button id="music-btn">♪</button>
 
     <div class="header">
         <h1>By Haige Chan</h1>
@@ -55,19 +65,16 @@
 
     <div class="books-grid">
 
-        <!-- ======================= 区域一：极简大图系列 ======================= -->
         <div class="section-title">Bold & Easy Edition (Ages 1-4)</div>
 
-        <!-- 1. 新水果简化版 -->
         <div class="book-card">
             <span class="easy-tag">Toddler Friendly</span>
-            <img src="Easy Fruits/cover.jpg" class="cover-img"> <!-- 💡 记得把图片路径改成你新的简化版路径 -->
+            <img src="Easy Fruits/cover.jpg" class="cover-img">
             <h2>Big & Easy Fruits Coloring Book</h2>
             <a href="Easy Fruits/" class="btn btn-enter">Resource Center</a>
-            <a href="https://www.amazon.com/dp/B0H31ZCZY8" class="btn btn-buy">🛒 Buy on Amazon</a> <!-- 💡 记得换成新书链接 -->
+            <a href="https://www.amazon.com/dp/B0H31ZCZY8" class="btn btn-buy">🛒 Buy on Amazon</a>
         </div>
 
-        <!-- 2. 预留：新蔬菜简化版 -->
         <div class="book-card">
             <span class="easy-tag">Toddler Friendly</span>
             <img src="Easy Veggies/cover.jpg" class="cover-img">
@@ -76,7 +83,6 @@
             <a href="https://www.amazon.com/dp/B0H41GYHVJ" class="btn btn-buy">🛒 Buy on Amazon</a>
         </div>
 
-        <!-- 3. 预留：新动物简化版 -->
         <div class="book-card">
             <span class="easy-tag">Toddler Friendly</span>
             <img src="Easy Animals/cover.jpg" class="cover-img">
@@ -85,8 +91,6 @@
             <a href="https://www.amazon.com/dp/B0H3CDNQS1" class="btn btn-buy">🛒 Buy on Amazon</a>
         </div>
 
-
-        <!-- ======================= 区域二：益智游戏系列（原版） ======================= -->
         <div class="section-title">Activity & Game Edition (Ages 3-8)</div>
 
         <div class="book-card">
@@ -119,8 +123,6 @@
             <a href="https://www.amazon.com/dp/B0GVYGDSNV" class="btn btn-buy">🛒 Buy on Amazon</a>
         </div>
 
-
-        <!-- ======================= 区域三：故事绘本系列 ======================= -->
         <div class="section-title">Storybooks & Inspiration</div>
 
         <div class="book-card">
@@ -139,5 +141,25 @@
 
     </div>
 
+    <script>
+        const audio = document.getElementById('bg-music');
+        const btn = document.getElementById('music-btn');
+
+        btn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                btn.textContent = '♪';
+            } else {
+                audio.pause();
+                btn.textContent = 'x';
+            }
+        });
+
+        document.body.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+            }
+        }, { once: true });
+    </script>
 </body>
 </html>
